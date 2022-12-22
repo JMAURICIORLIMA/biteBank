@@ -1,14 +1,15 @@
 package bank;
 
 public class Conta {
-    public double saldo;
-    public int agencia;
-    public int numero;
-    public Cliente titular;
+    private double saldo;
+    private String agencia;
+    private String numeroDaConta;
+    private Cliente titular;
 
-    public void saldoDisponivel() {
-        System.out.println("Saldo atual R$ " + this.saldo);
+    public double saldoDisponivel() {
+        return this.saldo;
     }
+
     public void depositar(Double valor) {
         if (valor <= 0) {
             System.out.println("Operação negada");
@@ -19,7 +20,7 @@ public class Conta {
     }
 
     public boolean saca(double valor) {
-        if (saldo < valor){
+        if (saldo < valor) {
             return false;
         } else {
             this.saldo -= valor;
@@ -37,5 +38,27 @@ public class Conta {
         }
     }
 
+    public String getAgencia() {
+        return agencia;
+    }
 
+    public void setAgencia(String agencia) {
+        this.agencia = agencia;
+    }
+
+    public String getNumeroDaConta() {
+        return numeroDaConta;
+    }
+
+    public void setNumeroDaConta(String numeroDaConta) {
+        this.numeroDaConta = numeroDaConta;
+    }
+
+    public Cliente getTitular() {
+        return titular;
+    }
+
+    public void setTitular(Cliente titular) {
+        this.titular = titular;
+    }
 }
