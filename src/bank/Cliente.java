@@ -8,6 +8,9 @@ public class Cliente {
     private String endereco;
 
     public Cliente(String nome, String cpf, String endereco) {
+        if (nome.isBlank() || cpf.length() != 11 || endereco.isBlank() || endereco.length() < 10) {
+            System.out.println("Cliente não poderá ser criado, dados incossitentes.");
+        }
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;

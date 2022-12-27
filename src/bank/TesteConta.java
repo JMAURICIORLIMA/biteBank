@@ -2,41 +2,44 @@ package bank;
 
 public class TesteConta {
     public static void main(String[] args) {
-        Conta contaDaAntonia = new Conta();
-        Cliente antonia = new Cliente("Antônia Freitas", "123.153.441-02",
-                "Programadora", "Rua dos Sonhos, 793");
 
-        contaDaAntonia.setAgencia("001");
-        contaDaAntonia.setTitular(antonia);
-        contaDaAntonia.setNumeroDaConta("010253");
+        Conta contaDaAntonia = new Conta("001", "112233-4",
+                new Cliente("Antônia Freitas", "12315344102", "Programadora",
+                        "Rua dos Sonhos, 793"));
+
         System.out.println(contaDaAntonia.getTitular().getNome());
+        System.out.println(contaDaAntonia.getAgencia());
+        System.out.println(contaDaAntonia.getNumeroDaConta());
 
-        contaDaAntonia.depositar(1500.00);
+        contaDaAntonia.depositar(1200.00);
         System.out.println(contaDaAntonia.saldoDisponivel());
 
-        System.out.println("-----------------------------");
+        System.out.println("-----------------------------------------------");
 
-        Conta contaDoMarcos = new Conta();
-        Cliente marcos = new Cliente("Marcos Brito", "012.123.344-02",
-                "Av. Visconde Barbosa, 132");
+        Conta contaDoJoao = new Conta("001", "156325-0",
+                new Cliente("João José", "12344585288", "Rua do futuro, 941"));
 
-        contaDoMarcos.setAgencia("001");
-        contaDoMarcos.setTitular(marcos);
-        contaDoMarcos.setNumeroDaConta("010203");
+        System.out.println(contaDoJoao.getTitular().getNome());
+        System.out.println(contaDoJoao.getAgencia());
+        System.out.println(contaDoJoao.getNumeroDaConta());
 
-        marcos.setProfissao("Programador");
+        contaDoJoao.depositar(300d);
+        System.out.println(contaDoJoao.saldoDisponivel());
 
-        System.out.println(contaDoMarcos.getTitular().getNome());
-//        System.out.println(contaDoMarcos.getTitular()); //Referência da titular
-//        System.out.println(marcos.getNome());
+        System.out.println("-----------------------------------------------");
 
-        System.out.println(contaDoMarcos.saldoDisponivel());
-
-        contaDaAntonia.transfere(200.00, contaDoMarcos);
+        contaDaAntonia.transfere(200d, contaDoJoao);
 
         System.out.println(contaDaAntonia.saldoDisponivel());
 
-        System.out.println(contaDoMarcos.saldoDisponivel());
+        System.out.println("-----------------------------------------------");
 
+        System.out.println(contaDoJoao.saldoDisponivel());
+
+        System.out.println("-----------------------------------------------");
+
+        //Cliente não poderá ser criado, pois existe incosistencia no cadastro.
+        Conta contaDaAmelia = new Conta("001", "132115-1",
+                new Cliente("Amelia da Silva", "94512556618", "Gestora de projetos", "Rua 1"));
     }
 }

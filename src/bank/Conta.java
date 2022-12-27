@@ -5,6 +5,28 @@ public class Conta {
     private String agencia;
     private String numeroDaConta;
     private Cliente titular;
+    private static int contasAbertas;
+
+    public Conta(String agencia, String numeroDaConta, Cliente titular) {
+        if (!verificaAgenciaEConta(agencia, numeroDaConta)) {
+            System.out.println("Conta não pode ser criada.");
+        } else {
+            this.agencia = agencia;
+            this.numeroDaConta = numeroDaConta;
+            this.titular = titular;
+            Conta.contasAbertas++;
+        }
+    }
+
+    public Boolean verificaAgenciaEConta(String agencia, String numeroDaConta) {
+        return agencia.length() == 3 && !agencia.isBlank()
+                && (numeroDaConta.length() == 8 && !numeroDaConta.isBlank());
+    }
+
+    public Boolean verificaAgenciaEConta() {
+        return agencia.length() == 3 && !agencia.isBlank()
+                && (numeroDaConta.length() == 8 && !numeroDaConta.isBlank());
+    }
 
     public double saldoDisponivel() {
         return this.saldo;
@@ -42,10 +64,6 @@ public class Conta {
         return agencia;
     }
 
-    public void setAgencia(String agencia) {
-        this.agencia = agencia;
-    }
-
     public String getNumeroDaConta() {
         return numeroDaConta;
     }
@@ -58,7 +76,4 @@ public class Conta {
         return titular;
     }
 
-    public void setTitular(Cliente titular) {
-        this.titular = titular;
-    }
 }
